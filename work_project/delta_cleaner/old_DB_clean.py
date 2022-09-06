@@ -24,8 +24,10 @@ while day_delta <= 11:
     day_delta += 1
 
 # Creating a file with paths to databases.
-# Создание файла с путями до баз данных
-os.system('-ls -l > all_DB.txt')
+# Создание файла с путями до инкрементов баз данных
+path_to_folder = input(str("Enter the path to the directory with increments. "
+                            "Example: data/current/snapshots/folder_name"))
+os.system(f'-ls -l {path_to_folder} > all_DB.txt')
 
 # create file with old DB and create file with commands for delete old DB.
 # создание файла с устаревшими БД и создание файла с командами для удаления устаревших БД
@@ -35,16 +37,14 @@ with open('all_DB.txt', 'r') as all_DB, \
         # Removing excess from ls output.
         # Удаление лишнего из вывода ls
         tmp_DB = removed_delta.replace('drwxrwx--x+  - hive hive          0 ', '')
-        tmp_DB = tmp_DB.rstrip('\n')
-        # Исключая пустые и лишние строки
+        # Excluding empty, extra lines and dates that do not need to be removed
+        # Исключая пустые, лишние строки и даты, которые не нужно удалять
         if tmp_DB[:10] not in list_date:
             if len(tmp_DB) > 0 and not tmp_DB.startswith('Found'):
                 # Search mask
                 # Маска поиска.
                 pattern = r'(\w+\S+)'
                 tmp_elem = re.findall(pattern, tmp_DB)
-                path_to_folder = input(str("Enter the path to the directory with increments. "
-                                           "Example: data/current/snapshots/folder_name"))
                 if check_correct_input(path_to_folder):
                     cmd_to_clean.write('-rm -f ' + path_to_folder + str(tmp_elem[0]) + '\n')
                 else:
