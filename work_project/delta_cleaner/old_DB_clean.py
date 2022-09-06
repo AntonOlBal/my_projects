@@ -26,7 +26,7 @@ while day_delta <= 11:
 # Creating a file with paths to databases.
 # Создание файла с путями до инкрементов баз данных
 path_to_folder = input(str("Enter the path to the directory with increments. "
-                            "Example: data/current/snapshots/folder_name"))
+                           "Example: data/current/snapshots/folder_name"))
 os.system(f'-ls -l {path_to_folder} > all_DB.txt')
 
 # create file with old DB and create file with commands for delete old DB.
@@ -39,16 +39,15 @@ with open('all_DB.txt', 'r') as all_DB, \
         tmp_DB = removed_delta.replace('drwxrwx--x+  - hive hive          0 ', '')
         # Excluding empty, extra lines and dates that do not need to be removed
         # Исключая пустые, лишние строки и даты, которые не нужно удалять
-        if tmp_DB[:10] not in list_date:
-            if len(tmp_DB) > 0 and not tmp_DB.startswith('Found'):
-                # Search mask
-                # Маска поиска.
-                pattern = r'(\w+\S+)'
-                tmp_elem = re.findall(pattern, tmp_DB)
-                if check_correct_input(path_to_folder):
-                    cmd_to_clean.write('-rm -f ' + path_to_folder + str(tmp_elem[0]) + '\n')
-                else:
-                    print('The path must start from ' + start_path + ' and not have special symbols')
+        if tmp_DB[:10] not in list_date and len(tmp_DB) > 0 and not tmp_DB.startswith('Found'):
+            # Search mask
+            # Маска поиска.
+            pattern = r'(\w+\S+)'
+            tmp_elem = re.findall(pattern, tmp_DB)
+            if check_correct_input(path_to_folder):
+                cmd_to_clean.write('-rm -f ' + path_to_folder + str(tmp_elem[0]) + '\n')
+            else:
+                print(f'The path must start from "/data/current/snapshots" and not have special symbols')
         break
 
 os.system('chmod +x cmd_to_clean.sh ; '
