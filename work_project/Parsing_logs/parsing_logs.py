@@ -6,12 +6,12 @@ import sys
 import os
 import datetime
 
-#name_log = str(sys.argv[2])
-#path_to_folder_logs = str(sys.argv[1])
+name_log = str(sys.argv[2])
+path_to_folder_logs = str(sys.argv[1])
 
 #TEST
-name_log = '5.06.2980.001_ina02.log'
-path_to_folder_logs = 'C:/folder'
+#name_log = '5.06.2980.001_ina02.log'
+#path_to_folder_logs = 'C:/folder'
 
 reg_exp_error = r'pls-|ORA-|WARRING|SP2-|Предупреждение|Ошибки|must be declared|compilation errors.$|с ошибками компиляции.$'
 reg_exp_dublicate_error = r'^Errors for .{1,70}:$|^Ошибки для .{1,70}$'
