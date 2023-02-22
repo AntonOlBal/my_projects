@@ -83,8 +83,8 @@ def merge_to_master(task):
 
 
 def check_release_in_jira(jira_connect, BUILD_VERSION):
-    json_all_release_fact = jira_connect.project("FACT").raw
-    if BUILD_VERSION not in json_all_release_fact:
-        return "Not release in Jira"
-    else:
-        return True
+    json_all_release_fact = jira_connect.projec_versions("FACT").raw
+    for json in json_all_release_fact:
+        if str(BUILD_VERSION) == str(json):
+            return True
+        return 'Not release in Jira'

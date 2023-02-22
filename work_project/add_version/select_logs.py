@@ -14,7 +14,11 @@ def table_logs(data, BUILD_VERSION):
     logs_task_table.hrules = ALL
     logs_task_table.vrules = ALL
     for logs in data:
-        logs_task_table.add_row([str(logs[0]), str(logs[1]), str(logs[2])])
+        try:
+            logs_task_table.add_row([str(logs[0]), str(logs[1]), str(logs[2])])
+        except:
+            print(logs)
+            continue
 
     print(str(logs_task_table))
 
@@ -31,4 +35,3 @@ def table_logs_fail(data, BUILD_VERSION):
     logs_task_table.add_row([str(data[0]), str(data[1])])
 
     print(str(logs_task_table))
-
