@@ -15,7 +15,7 @@ def table_logs(data, BUILD_VERSION):
     logs_task_table.vrules = ALL
     for logs in data:
         try:
-            logs_task_table.add_row([str(logs[0]), str(logs[1]), str(logs[2])])
+            logs_task_table.add_row([str(logs[0]), str(logs[1]), str( logs[2])])
         except:
             print(logs)
             continue
