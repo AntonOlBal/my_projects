@@ -1,0 +1,16 @@
+variables:
+   BUILD_VERSION: $BUILD_VERSION
+   JIRA_USER: $JIRA_USER
+   JIRA_PASSWORD: $JIRA_PASSWORD
+
+stages:
+ - Selection_issue
+
+Selection_issue:
+ needs: []
+ stage: Selection_issue
+ when: manual
+ tags:
+   - auto-deploy
+ script:
+   - python ./jira/select_v2/select_v3.py $JIRA_USER $JIRA_PASSWORD $BUILD_VERSION

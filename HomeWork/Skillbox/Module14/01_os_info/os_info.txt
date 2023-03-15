@@ -1,4 +1,0 @@
-OS info is 
-uname_result(system='Windows', node='DKAB-440', release='10', version='10.0.19041', machine='AMD64', processor='Intel64 Family 6 Model 42 Stepping 7, GenuineIntel')
-
-Python version is 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:57:54) [MSC v.1924 64 bit (AMD64)] ('64bit', 'WindowsPE')

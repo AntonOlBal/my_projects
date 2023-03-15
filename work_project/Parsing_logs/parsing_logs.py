@@ -107,7 +107,7 @@ with open(f'{path_to_folder_logs}/{name_log}', 'r') as file_log:
                         for line_er_bdy in range(num_start_issue - 1, num_line_dubl_er):
                             result += lines[line_er_bdy]
                         result += lines[num_end_issue]
-            # Запись в result от начла до конца, только если была ошибка и она не может дублироваться
+            # Запись в result от начала до конца, только если была ошибка и она не может дублироваться
             elif num_start_issue and num_line_comp_er and num_end_issue != 0:
                 for line_er in range(num_start_issue - 1, num_end_issue + 1):
                     result += lines[line_er]
