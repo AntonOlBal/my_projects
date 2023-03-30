@@ -1,0 +1,24 @@
+version: "1"
+
+volumes:
+  mongo_db_volume:
+
+services:
+  web_app:
+    build: web_app/
+    volumes:
+      - C:\pythonProject\my_projects\Training\app_docker\web_app\resources:/usr/src/app/resources
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - TZ = Europe\Moscow
+      - MONG_DB_ADDR = mongodb
+      - MONGO_DB_PORT = 27017
+
+  mogo_db:
+    image: mongo:latest
+    volumes:
+      - mongo_db_volume:/data/db
+    restart: always
+
