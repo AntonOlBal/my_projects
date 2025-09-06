@@ -16,7 +16,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     # Options
     jira_option = {
-        'server': "https://jira.psbnk.msk.ru/",
+        'server': "https://jira/",
         'verify': False
     }
     # Connect to jira
@@ -56,7 +56,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                         logging.info(f'The Merge request in the task ({task}) is not equal to the release version')
                         logs.append([
                             str(task),
-                            f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                            f'https://jira./browse/{str(task)}',
                             f'RELEASE BRANCH NOT IN: {BUILD_VERSION}.'
                         ])
 
@@ -67,7 +67,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                                 adding_version(jira_connect, task, BUILD_VERSION)
                                 logs.append([
                                     str(task),
-                                    f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                                    f'https://jira./browse/{str(task)}',
                                     'Add to version.'
                                 ])
                             case [False, None]:
@@ -75,7 +75,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                                 comments_more_rfc(jira_connect, task, BUILD_VERSION)
                                 logs.append([
                                     str(task),
-                                    f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                                    f'https://jira./browse/{str(task)}',
                                     'More RFC detected.'
                                 ])
 
@@ -84,7 +84,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                                 adding_version(jira_connect, task, BUILD_VERSION)
                                 logs.append([
                                     str(task),
-                                    f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                                    f'https://jira./browse/{str(task)}',
                                     'Add to version.'
                                 ])
 
@@ -93,14 +93,14 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                                 adding_version(jira_connect, task, BUILD_VERSION)
                                 logs.append([
                                     str(task),
-                                    f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                                    f'https://jira./browse/{str(task)}',
                                     'Add to version.'
                                 ])
 
                             case False:
                                 logs.append([
                                     str(task),
-                                    f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                                    f'https://jira./browse/{str(task)}',
                                     'The RFC is not in the right status.'
                                 ])
 
@@ -109,7 +109,7 @@ def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION):
                         exception_master(jira_connect, task, BUILD_VERSION)
                         logs.append([
                             str(task),
-                            f'https://jira.psbnk.msk.ru/browse/{str(task)}',
+                            f'https://jira./browse/{str(task)}',
                             f"Exception the task ({task}) was commented out in the master branch."
                         ])
 
