@@ -9,7 +9,7 @@ import datetime
 def main(JIRA_USER, JIRA_PASSWORD, BUILD_VERSION, RELEASE_DATE, DESCRIPTION):
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)  # Ignoring the SSL certificate
     jira_option = {
-        'server': 'https://jira.psbnk.msk.ru/',
+        'server': 'https://jira.ru/',
         'verify': False
     }
     jira_connect = JIRA(basic_auth=(JIRA_USER, JIRA_PASSWORD), options=jira_option)
